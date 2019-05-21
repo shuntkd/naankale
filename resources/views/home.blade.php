@@ -4,7 +4,7 @@
 
 <div class="hero">
 				<div class="searchBox">
-					<form action="result.html" method="GET" >
+					<form action="{{ url("/result") }}" method="GET" >
 						<div class="searchBox__input"><input type="text" name="freeword" id="freeword" placeholder="地域を入力して検索"/></div>
 						<i class="searchBox__submit"><input type="submit" id="submit" value="&#xf002"/></i>
 					</form>

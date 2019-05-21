@@ -24,7 +24,9 @@
 			
 			
 		<div class="commom_container">
-			<header></header>
+			<header>
+                @yield('header')
+            </header>
 
 			@yield('content')
 

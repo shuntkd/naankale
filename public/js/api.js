@@ -72,7 +72,7 @@ function showResult( result ) {
         } else if(result.rest[i].image_url.shop_image2!=="") {
             thumbnail.append('<li><a href=""><div class="shopImg"><img src='+result.rest[i].image_url.shop_image2+' class="thumb" alt="img"></div><div class="shopName"><p>'+result.rest[i].name+'<br>'+result.rest[i].access.station+'</p></div></a></li>');
         } else {
-            thumbnail.append('<li><a href=""><div class="shopImg"><img src=assets/img/result/noImage.png class="thumb" alt="img"></div><div class="shopName"><p>'+result.rest[i].name+'<br>'+result.rest[i].access.station+'</p></div></a></li>');
+            thumbnail.append('<li><a href=""><div class="shopImg"><img src="{{ asset(\'img/result/noImage.png\') }}" class="thumb" alt="img"></div><div class="shopName"><p>'+result.rest[i].name+'<br>'+result.rest[i].access.station+'</p></div></a></li>');
         }     
     };
 
@@ -140,7 +140,7 @@ function resize(){
 
     for (i=0; elms[i]; i++){
         if(elms[i].width < maxWidth || elms[i].height < maxHeight){
-            elms[i].src="assets/img/result/noimage.png";
+            elms[i].src="{{ asset('img/result/noImage.png')}}";
         }       
     };
 
