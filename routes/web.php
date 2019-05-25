@@ -14,3 +14,5 @@
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/result', 'ResultController@index')->name('result');
+
+Route::get('/shop', 'ShopController@index')->name('shop');

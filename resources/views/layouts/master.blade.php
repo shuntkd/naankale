@@ -16,7 +16,11 @@
 		<script type="text/javascript" src="{{ asset('js/slick.js') }}" defer></script>
 
 		<script type="text/javascript" src="{{ asset('js/smoothscroll.js') }}" defer></script>
-		<script type="text/javascript" src="{{ asset('js/api.js') }}" defer></script>
+		@yield('js')
+        
+        <script>
+            window.noImagePath = "{{ asset('img/result/noImage.png')}}";
+        </script>
 
 	</head>
 	<body>
