@@ -16,6 +16,7 @@
 		<script type="text/javascript" src="{{ asset('js/slick.js') }}" defer></script>
 
 		<script type="text/javascript" src="{{ asset('js/smoothscroll.js') }}" defer></script>
+		<script type="text/javascript" src="{{ asset('js/login.js') }}" defer></script>
 		@yield('js')
         
         <script>
@@ -34,11 +35,18 @@
 					<ul class="menu">
 						<li><a href="{{route('home')}}">ホーム</a></li>
 						<li><a href="/#concept">コンセプト</a></li>
-						<li><a href="">ログイン</a></li>
+						<li><a class="login" href="">ログイン</a></li>
 					</ul>
 				</div>
             </header>
 			<div class="contents_container">
+
+				<div class="js-modal"></div>
+				<div class="js-window">
+					<div class="btn">
+							<a href="#" class="square_btn">twitterでログインする</a>
+					</div>
+				</div>
 
 				<section class="content">
 					<div class="content__title">
@@ -47,11 +55,12 @@
 						<img src="{{ asset('img/top/concept_2.png')}}" alt="image" class="right"/>
 					</div>
 					<div class="search">
+						<ul class="searchWord"></ul>
 						<div class="searchBox">
-								<form method="get" action="#">
-									<div class="searchBox__input"><input type="text" placeholder="地域を入力して検索"></div>
+							<form method="get" action="{{route('result')}}">
+									<div class="searchBox__input"><input type="text" name="freeword" id="freeword" placeholder="地域を入力して検索"/></div>
 									<div class="searchBox__submit"><input type="submit" value="&#xf002"></div>
-								</form>
+							</form>
 						</div>
 					</div>
 			@endif
