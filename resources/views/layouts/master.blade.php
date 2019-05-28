@@ -28,11 +28,38 @@
 			
 			
 		<div class="commom_container">
+			@if(Request::is('result','shop'))
 			<header>
-                @yield('header')
+				<div>
+					<ul class="menu">
+						<li><a href="{{route('home')}}">ホーム</a></li>
+						<li><a href="/#concept">コンセプト</a></li>
+						<li><a href="">ログイン</a></li>
+					</ul>
+				</div>
             </header>
+			<div class="contents_container">
 
-			@yield('content')
+				<section class="content">
+					<div class="content__title">
+						<h2>@yield('title')</h2>
+						<img src="{{ asset('img/top/concept_1.png')}}" alt="image" class="left"/>
+						<img src="{{ asset('img/top/concept_2.png')}}" alt="image" class="right"/>
+					</div>
+					<div class="search">
+						<div class="searchBox">
+								<form method="get" action="#">
+									<div class="searchBox__input"><input type="text" placeholder="地域を入力して検索"></div>
+									<div class="searchBox__submit"><input type="submit" value="&#xf002"></div>
+								</form>
+						</div>
+					</div>
+			@endif
+
+					@yield('content')
+				</section>
+			</div>
+
 
 			<footer>
 					<ul>
