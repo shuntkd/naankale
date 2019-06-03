@@ -43,9 +43,27 @@
 
 				<div class="js-modal"></div>
 				<div class="js-window">
-					<div class="btn">
-							<a href="#" class="square_btn">twitterでログインする</a>
+					@if(Auth::user())
+					<div class="content__title">
+						<h2>アカウント情報</h2>
+						<img src="{{ asset('img/top/concept_1.png')}}" alt="image" class="left"/>
+						<img src="{{ asset('img/top/concept_2.png')}}" alt="image" class="right"/>
 					</div>
+						<p>{{Auth::user()}}</p>
+					<div class="btn">
+						<a href="/auth/logout" class="square_btn">ログアウト</a>
+					</div>
+					@else
+
+					<div class="content__title">
+						<h2>ログインする</h2>
+						<img src="{{ asset('img/top/concept_1.png')}}" alt="image" class="left"/>
+						<img src="{{ asset('img/top/concept_2.png')}}" alt="image" class="right"/>
+					</div>
+					<a href="auth/google">
+						<div class="js-gbtn"></div>
+					</a>
+					@endif
 				</div>
 
 				<section class="content">
