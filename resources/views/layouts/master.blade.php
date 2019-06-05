@@ -14,13 +14,17 @@
 		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" defer></script>
 		<script type="text/javascript" src="{{ asset('js/slick-1.8.1/slick/slick.min.js') }}" defer></script>
 		<script type="text/javascript" src="{{ asset('js/slick.js') }}" defer></script>
-
 		<script type="text/javascript" src="{{ asset('js/smoothscroll.js') }}" defer></script>
 		<script type="text/javascript" src="{{ asset('js/login.js') }}" defer></script>
 		@yield('js')
         
         <script>
-            window.noImagePath = "{{ asset('img/result/noImage.png')}}";
+			window.noImagePath = "{{ asset('img/result/noImage.png')}}";
+			var list = @json("{{$code}}")
+			$( "#freeword" ).autocomplete({
+                    /**プルダウンリスト */
+                    source:list
+                });
         </script>
 
 	</head>
