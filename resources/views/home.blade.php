@@ -1,10 +1,16 @@
 @extends('layouts.master')
 
+@section('js')
+
+<script type="text/javascript" src="{{ asset('js/api.js') }}" defer></script>
+
+@endsection('js')
+
 @section('content')
 
 <div class="hero">
 				<div class="searchBox">
-					<form action="result.html" method="GET" >
+					<form action="{{route('result')}}" method="GET" >
 						<div class="searchBox__input"><input type="text" name="freeword" id="freeword" placeholder="地域を入力して検索"/></div>
 						<i class="searchBox__submit"><input type="submit" id="submit" value="&#xf002"/></i>
 					</form>
@@ -51,7 +57,7 @@
 								<div class="swiper-slide"><img src="{{ asset('img/top/right.jpg') }}" alt="image"/></div>
 								<div class="shopName">
 									<img src="{{ asset('img/top/shop_bk.png') }}" alt="image">
-									<p>アーリー</br>横浜市</p>
+									<p>アーリー<br>横浜市</p>
 								</div>
 							</a>
 						</li>
@@ -79,7 +85,7 @@
 								<div class="swiper-slide"><img src="{{ asset('img/top/right.jpg') }}" alt="image"/></div>
 								<div class="shopName">
 										<img src="{{ asset('img/top/shop_bk.png')}}" alt="image">
-										<p>アーリー</br>横浜市</p>
+										<p>アーリー<br>横浜市</p>
 								</div>
 							</a>
 						</li>

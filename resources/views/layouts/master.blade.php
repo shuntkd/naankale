@@ -16,7 +16,12 @@
 		<script type="text/javascript" src="{{ asset('js/slick.js') }}" defer></script>
 
 		<script type="text/javascript" src="{{ asset('js/smoothscroll.js') }}" defer></script>
-		<script type="text/javascript" src="{{ asset('js/api.js') }}" defer></script>
+		<script type="text/javascript" src="{{ asset('js/login.js') }}" defer></script>
+		@yield('js')
+        
+        <script>
+            window.noImagePath = "{{ asset('img/result/noImage.png')}}";
+        </script>
 
 	</head>
 	<body>
@@ -24,14 +29,69 @@
 			
 			
 		<div class="commom_container">
-			<header></header>
+			@if(!Request::is('/'))
+			<header>
+				<div>
+					<ul class="menu">
+						<li><a href="{{route('home')}}">ホーム</a></li>
+						<li><a href="/#concept">コンセプト</a></li>
+						<li><a class="login" href="">ログイン</a></li>
+					</ul>
+				</div>
+            </header>
+			<div class="contents_container">
 
-			@yield('content')
+				<div class="js-modal"></div>
+				<div class="js-window">
+					@if(Auth::user())
+					<div class="content__title">
+						<h2>アカウント情報</h2>
+						<img src="{{ asset('img/top/concept_1.png')}}" alt="image" class="left"/>
+						<img src="{{ asset('img/top/concept_2.png')}}" alt="image" class="right"/>
+					</div>
+						<p>{{Auth::user()}}</p>
+					<div class="btn">
+						<a href="/auth/logout" class="square_btn">ログアウト</a>
+					</div>
+					@else
+
+					<div class="content__title">
+						<h2>ログインする</h2>
+						<img src="{{ asset('img/top/concept_1.png')}}" alt="image" class="left"/>
+						<img src="{{ asset('img/top/concept_2.png')}}" alt="image" class="right"/>
+					</div>
+					<a href="{{url('auth/google'}}">
+						<div class="js-gbtn"></div>
+					</a>
+					@endif
+				</div>
+
+				<section class="content">
+					<div class="content__title">
+						<h2>@yield('title')</h2>
+						<img src="{{ asset('img/top/concept_1.png')}}" alt="image" class="left"/>
+						<img src="{{ asset('img/top/concept_2.png')}}" alt="image" class="right"/>
+					</div>
+					<div class="search">
+						<ul class="searchWord"></ul>
+						<div class="searchBox">
+							<form method="get" action="{{route('result')}}">
+									<div class="searchBox__input"><input type="text" name="freeword" id="freeword" placeholder="地域を入力して検索"/></div>
+									<div class="searchBox__submit"><input type="submit" value="&#xf002"></div>
+							</form>
+						</div>
+					</div>
+			@endif
+
+					@yield('content')
+				</section>
+			</div>
+
 
 			<footer>
 					<ul>
-						<li><a href="#kiyaku" class="kiyakuink">利用規約</a></li>
-						<li><a href="#praivacy" class="praivacyLink">プライバシーポリシー</a></li>
+						<li><a href="{{route('kiyaku')}}" class="kiyakuink">利用規約</a></li>
+						<li><a href="{{route('policy')}}" class="praivacyLink">プライバシーポリシー</a></li>
 					</ul>
 					<p>© Copyright 2019 ナンを食べに行こう All rights reserved.</p>		
 			</footer>
