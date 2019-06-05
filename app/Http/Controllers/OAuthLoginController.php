@@ -33,7 +33,7 @@ class OAuthLoginController extends Controller
     // ログアウト
     public function postLogout()
     {
-        \Auth::logout();
+        Auth::logout();
         return redirect()->route('home');
     }
 }

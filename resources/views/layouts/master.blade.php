@@ -29,7 +29,7 @@
 			
 			
 		<div class="commom_container">
-			@if(Request::is('result','shop'))
+			@if(!Request::is('/'))
 			<header>
 				<div>
 					<ul class="menu">
@@ -60,7 +60,7 @@
 						<img src="{{ asset('img/top/concept_1.png')}}" alt="image" class="left"/>
 						<img src="{{ asset('img/top/concept_2.png')}}" alt="image" class="right"/>
 					</div>
-					<a href="auth/google">
+					<a href="{{url('auth/google'}}">
 						<div class="js-gbtn"></div>
 					</a>
 					@endif
