@@ -20,7 +20,7 @@
         
         <script>
 			window.noImagePath = "{{ asset('img/result/noImage.png')}}";
-			var list = @json("{{$code}}")
+			var list = JSON.parse("{{$shop_list}}");
 			$( "#freeword" ).autocomplete({
                     /**プルダウンリスト */
                     source:list
@@ -64,7 +64,7 @@
 						<img src="{{ asset('img/top/concept_1.png')}}" alt="image" class="left"/>
 						<img src="{{ asset('img/top/concept_2.png')}}" alt="image" class="right"/>
 					</div>
-					<a href="{{url('auth/google'}}">
+					<a href="{{url('auth/google')}}">
 						<div class="js-gbtn"></div>
 					</a>
 					@endif
