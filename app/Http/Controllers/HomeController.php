@@ -46,8 +46,8 @@ class HomeController extends Controller
             $code[$array_m["garea_middle"][$i]["areacode_m"]] =$array_m["garea_middle"][$i]["areaname_m"];
         }
 
-        $area_list = json_encode($code,JSON_UNESCAPED_UNICODE);
+        $area_list = json_encode($code);
                 
-        return view('home',$area_list);
+        return view('home',['area_list' => $area_list]);
     }
 }

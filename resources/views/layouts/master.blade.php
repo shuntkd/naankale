@@ -20,12 +20,14 @@
         
         <script>
 			window.noImagePath = "{{ asset('img/result/noImage.png')}}";
-			var list = JSON.parse("{{$shop_list}}");
-			$( "#freeword" ).autocomplete({
-                    /**プルダウンリスト */
-                    source:list
-                });
-        </script>
+			var list_json =  [];
+			var list_json = JSON.parse('{!! $area_list !!}');
+			var list = [];
+			for(var key in list_json){
+				list.push(list_json[key]);
+			}		
+		</script>
+		<script type="text/javascript" src="{{ asset('js/autocomp.js') }}" defer></script>
 
 	</head>
 	<body>
