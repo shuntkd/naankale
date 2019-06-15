@@ -19,9 +19,8 @@
 		@yield('js')
         
         <script>
-			window.noImagePath = "{{ asset('img/result/noImage.png')}}";
 			var list_json =  [];
-			var list_json = JSON.parse('{!! $area_list !!}');
+			var list_json = JSON.parse('{!! config('area_list') !!}');
 			var list = [];
 			for(var key in list_json){
 				list.push(list_json[key]);
@@ -79,9 +78,12 @@
 						<img src="{{ asset('img/top/concept_2.png')}}" alt="image" class="right"/>
 					</div>
 					<div class="search">
-						<ul class="searchWord"></ul>
+						@if(!empty($freeword))
+							<ul class="searchWord"><li><p>{{$freeword}}</p></li></ul>
+						@endif
 						<div class="searchBox">
 							<form method="get" action="{{route('result')}}">
+									{{ csrf_field() }}	
 									<div class="searchBox__input"><input type="text" name="freeword" id="freeword" placeholder="地域を入力して検索"/></div>
 									<div class="searchBox__submit"><input type="submit" value="&#xf002"></div>
 							</form>

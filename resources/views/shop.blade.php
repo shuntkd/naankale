@@ -1,10 +1,5 @@
 @extends('layouts.master')
 
-@section('js')
-
-<script type="text/javascript" src="{{ asset('js/apiShop.js') }}" defer></script>
-
-@endsection('js')
 
 @section('title',"詳細情報")
 
@@ -14,9 +9,13 @@
                                 
         <div class="shopContents">
             <div class="shopContents__container">
-                    <div class="shopImg"></div>
+                    <div class="shopImg">
+                        <img src="{{$img}}" alt="image">
+                    </div>
                     <div class="shopProfile">
                         <div class="shopName">
+                            <h3>{{$shopname}}</h3>
+                            <p>{{$chiiki}}</p>
                         </div>
                         <div>
                             <div class="btn">
@@ -24,7 +23,9 @@
                             </div>
                         </div>									
                     </div>
-                    <p class="gLink"></p>
+                    <p class="gLink">
+                        <a href="{{$gurunabi}}">ぐるなびで詳しく見る→</a>
+                    </p>
             </div>
 
             <div class="shopContents__comment">
