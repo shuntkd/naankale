@@ -21,6 +21,7 @@ class OAuthLoginController extends Controller
         if (!$user->exists) {
             $user['name'] = $googleUser->getNickname() ?? $googleUser->getName() ?? $googleUser->getNick();
             $user['email'] = $googleUser->email;
+            $user['picture'] = $googleUser->user['picture'];
             $user['verified'] = 1;
            $user['google_id'] = $googleUser->getId();
             $user['google_name'] = $googleUser->getNickname() ?? $googleUser->getName() ?? $googleUser->getNick();

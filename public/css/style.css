@@ -78,6 +78,20 @@ header a:hover{
 	width: 50%;
 	background: #FFFFFF;
 	z-index: 5;
+	text-align: center;
+}
+
+
+.account_profile img{
+	position: relative;
+	border-radius: 50%;
+	width: 60px;
+	margin:40px auto 10px auto;
+}
+
+.account_profile p {
+	position: relative;
+	margin:10px auto;
 }
 
 .js-gbtn {
@@ -434,6 +448,7 @@ header a:hover{
 .thumbnail .shopImg img{
 
 	width: 92%;
+	height: 30%;
 	-webkit-mask-image: url(../img/result/result_mask.png);
 	-webkit-mask-size:contain;	
 	-webkit-mask-position: center;
@@ -443,7 +458,7 @@ header a:hover{
 	-webkit-mask-repeat: no-repeat;
 	mask-repeat: no-repeat;
 	margin: 4%;
-	object-fit: contain;
+	object-fit: cover;
 }
 
 .thumbnail div.shopImg{
@@ -668,22 +683,6 @@ header a:hover{
 .btn a:hover{
 	color: #FFFFFF;
 }
-
-.js-window .btn{
-	top:50%;
-	left:50%;
-	transform:translate(-50%, -50%);
-	background-color:#00acee;
-	z-index: 5;
-}
-
-
-.js-window .btn:hover{
-	background-color:#2bc4ff;
-
-}
-
-
 
 /* comment 設定
    =================================================================== */

@@ -2,7 +2,7 @@
 
 @section('js')
 
-<script type="text/javascript" src="{{ asset('js/api.js') }}" defer></script>
+
 
 @endsection('js')
 

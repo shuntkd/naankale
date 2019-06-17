@@ -14,14 +14,19 @@
 		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" defer></script>
 		<script type="text/javascript" src="{{ asset('js/slick-1.8.1/slick/slick.min.js') }}" defer></script>
 		<script type="text/javascript" src="{{ asset('js/slick.js') }}" defer></script>
-
 		<script type="text/javascript" src="{{ asset('js/smoothscroll.js') }}" defer></script>
 		<script type="text/javascript" src="{{ asset('js/login.js') }}" defer></script>
 		@yield('js')
         
         <script>
-            window.noImagePath = "{{ asset('img/result/noImage.png')}}";
-        </script>
+			var list_json =  [];
+			var list_json = JSON.parse('{!! config('area_list') !!}');
+			var list = [];
+			for(var key in list_json){
+				list.push(list_json[key]);
+			}		
+		</script>
+		<script type="text/javascript" src="{{ asset('js/autocomp.js') }}" defer></script>
 
 	</head>
 	<body>
@@ -49,7 +54,10 @@
 						<img src="{{ asset('img/top/concept_1.png')}}" alt="image" class="left"/>
 						<img src="{{ asset('img/top/concept_2.png')}}" alt="image" class="right"/>
 					</div>
-						<p>{{Auth::user()}}</p>
+					<div class="account_profile">
+						<img src="{{Auth::user()->picture}}" alt="image" />
+						<p>{{Auth::user()->name}}</p>
+					</div>
 					<div class="btn">
 						<a href="/auth/logout" class="square_btn">ログアウト</a>
 					</div>
@@ -60,7 +68,7 @@
 						<img src="{{ asset('img/top/concept_1.png')}}" alt="image" class="left"/>
 						<img src="{{ asset('img/top/concept_2.png')}}" alt="image" class="right"/>
 					</div>
-					<a href="{{url('auth/google'}}">
+					<a href="{{url('auth/google')}}">
 						<div class="js-gbtn"></div>
 					</a>
 					@endif
@@ -73,9 +81,12 @@
 						<img src="{{ asset('img/top/concept_2.png')}}" alt="image" class="right"/>
 					</div>
 					<div class="search">
-						<ul class="searchWord"></ul>
+						@if(!empty($freeword))
+							<ul class="searchWord"><li><p>{{$freeword}}</p></li></ul>
+						@endif
 						<div class="searchBox">
 							<form method="get" action="{{route('result')}}">
+									{{ csrf_field() }}	
 									<div class="searchBox__input"><input type="text" name="freeword" id="freeword" placeholder="地域を入力して検索"/></div>
 									<div class="searchBox__submit"><input type="submit" value="&#xf002"></div>
 							</form>
