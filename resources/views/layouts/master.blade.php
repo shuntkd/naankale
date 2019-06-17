@@ -54,7 +54,10 @@
 						<img src="{{ asset('img/top/concept_1.png')}}" alt="image" class="left"/>
 						<img src="{{ asset('img/top/concept_2.png')}}" alt="image" class="right"/>
 					</div>
-						<p>{{Auth::user()}}</p>
+					<div class="account_profile">
+						<img src="{{Auth::user()->picture}}" alt="image" />
+						<p>{{Auth::user()->name}}</p>
+					</div>
 					<div class="btn">
 						<a href="/auth/logout" class="square_btn">ログアウト</a>
 					</div>
