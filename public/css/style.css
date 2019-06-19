@@ -727,6 +727,11 @@ li.comment {
 	width: 30%;
 	padding: 25px;
 }
+.submitComment .icon img{
+	position: relative;
+	border-radius: 50%;
+	width: 60px;	
+}
 
 .commentBox{
 	width: 100%;

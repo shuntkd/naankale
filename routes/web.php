@@ -30,3 +30,7 @@ Route::get('/auth/callback/google', 'OAuthLoginController@authGoogleCallback');
 Route::get('/auth/logout', 'OAuthLoginController@postLogout');
 
 
+Route::resource('comments', 'commentsController',['only' => ['store']]);
+Route::resource('shops', 'ShopsController', ['only' => ['create', 'store']]);
+
+

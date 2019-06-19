@@ -36,28 +36,34 @@
                 </div>
 
                 <ul class="commentList">
-                    <li class="comment">
-                        <div><img src="{{ asset('img/shop/icon.png')}}" alt="image"></div>
-                        <p>コメントコメントコメントコメントコメントコメントコメント</p>
-                    </li>
-                    <li class="comment">
-                        <div><img src="{{ asset('img/shop/icon.png')}}" alt="image"></div>
-                        <p>コメントコメントコメントコメントコメントコメントコメント</p>
-                    </li>
-                    <li class="comment">
-                        <div><img src="{{ asset('img/shop/icon.png')}}" alt="image"></div>
-                        <p>コメントコメントコメントコメントコメントコメントコメント</p>
-                    </li>
+                    @if(isset($shop))
+                        @foreach($shop->comments as $comment)
+                        <li class="comment">
+                            <div><img src="{{ asset('img/shop/icon.png')}}" alt="image"></div>
+                            <p>{!! nl2br(e($comment->body)) !!}</p>
+                        </li>
+                        @endforeach
+                    @else
+                        <li class="comment">
+                            <div><img src="{{ asset('img/shop/icon.png')}}" alt="image"></div>
+                            <p>コメントはまだありません</p>
+                        </li>
+                    @endif
                 </ul>
-                <form action="" method="post">
+                @if(Auth::check())
+                <form action="{{route('comments.store')}}" method="post">
+                @csrf
                     <div class="submitComment">								
-                        <div class="icon"><img src="{{ asset('img/shop/icon.png')}}" alt="image"></div>
-                        <div class="commentBox">											
-                            <p><input type="text" class="commentBox__input" placeholder="コメントを入力"></p>
+                        <div class="icon"><img src="{{ Auth::user()->picture }}" alt="image"></div>
+                        <div class="commentBox">
+                            <input name="guruid" type="hidden" value="{{$guruid}}">	
+                            <input name="user_id" type="hidden" value="{{Auth::user()->id}}">											
+                            <p><input type="text" class="commentBox__input" name="body" placeholder="コメントを入力"></p>
                             <input type="submit" class="commentBox__submit" value="投稿">																								
                         </div>							
                     </div>
                 </form>	
+                @endif
             </div>
         </div>
 
