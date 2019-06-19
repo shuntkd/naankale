@@ -10,12 +10,19 @@ class CommentsController extends Controller
     public function store(Request $request)
     {
         $params = $request->validate([
-            'guruid' => 'required | max:50',
-            'body' => 'required|max:2000',
-            'uer_id'=>'required | max:1000',
+            'guruid' => 'required',
+            'body' => 'required',
+            'user_id'=>'required',
         ]);
 
-        $shop = Shop::firstOrCreate(['guruid'=>$params['guruid']]);
+        
+
+        if(Shop::where(['guruid'=>$params['guruid']])->exists()){
+            $shop = Shop::where(['guruid'=>$params['guruid']])->first();
+        }else{
+            Shop::Create(['guruid'=>$params['guruid']]);
+            $shop = Shop::where(['guruid'=>$params['guruid']])->first();
+        }
         $shop->comments()->create($params);
 
         return redirect()->route('shop', ['shop' => $shop]);
