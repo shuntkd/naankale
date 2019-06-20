@@ -28,13 +28,13 @@ class OAuthLoginController extends Controller
             $user->save();
         }
         Auth::login($user);
-        return redirect()->route('home');
+        return redirect()->back();
     }
 
     // ログアウト
     public function postLogout()
     {
         Auth::logout();
-        return redirect()->route('home');
+        return redirect()->back();
     }
 }

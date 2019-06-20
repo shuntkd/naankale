@@ -15,7 +15,6 @@ class CommentsController extends Controller
             'user_id'=>'required',
         ]);
 
-        
 
         if(Shop::where(['guruid'=>$params['guruid']])->exists()){
             $shop = Shop::where(['guruid'=>$params['guruid']])->first();
@@ -25,6 +24,6 @@ class CommentsController extends Controller
         }
         $shop->comments()->create($params);
 
-        return redirect()->route('shop', ['shop' => $shop]);
+        return redirect()->back();
     }
 }

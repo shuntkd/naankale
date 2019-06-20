@@ -36,19 +36,25 @@
                 </div>
 
                 <ul class="commentList">
-                    @if(isset($shop))
-                        @foreach($shop->comments as $comment)
+                @if($shop!='')
+                    @forelse($shop->comments as $comment)
                         <li class="comment">
                             <div><img src="{{ asset('img/shop/icon.png')}}" alt="image"></div>
                             <p>{!! nl2br(e($comment->body)) !!}</p>
                         </li>
-                        @endforeach
-                    @else
+                    @empty
                         <li class="comment">
                             <div><img src="{{ asset('img/shop/icon.png')}}" alt="image"></div>
                             <p>コメントはまだありません</p>
                         </li>
-                    @endif
+                    @endforelse
+                @else
+                    <li class="comment">
+                        <div><img src="{{ asset('img/shop/icon.png')}}" alt="image"></div>
+                        <p>コメントはまだありません</p>
+                    </li>
+                @endif
+
                 </ul>
                 @if(Auth::check())
                 <form action="{{route('comments.store')}}" method="post">

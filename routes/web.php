@@ -15,7 +15,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/result', 'ResultController@search_shop')->name('result');
 
-Route::get('/shop', 'ShopController@index')->name('shop');
+Route::get('/shop', 'ShopsController@index')->name('shop');
 
 Route::get('/kiyaku', 'KiyakuController@index')->name('kiyaku');
 
