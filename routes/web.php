@@ -15,7 +15,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/result', 'ResultController@search_shop')->name('result');
 
-Route::get('/shop', 'ShopController@index')->name('shop');
+Route::get('/shop', 'ShopsController@index')->name('shop');
 
 Route::get('/kiyaku', 'KiyakuController@index')->name('kiyaku');
 
@@ -28,5 +28,9 @@ Auth::routes();
 Route::get('/auth/{service}', 'OAuthLoginController@getGoogleAuth')->where('service', 'google');
 Route::get('/auth/callback/google', 'OAuthLoginController@authGoogleCallback');
 Route::get('/auth/logout', 'OAuthLoginController@postLogout');
+
+
+Route::resource('comments', 'CommentsController',['only' => ['store']]);
+Route::resource('shops', 'ShopsController', ['only' => ['create', 'store']]);
 
 

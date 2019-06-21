@@ -19,13 +19,9 @@
         @else
             <?php $img_url = asset('img/result/noImage.png'); ?>
         @endif
-        <?php
-            $img = \Image::make($img_url);
-            $img->crop(477,477);
 
-        ?>
         <li>
-            <a href="{{action('ShopController@index',['shop_content' => $array_result['rest'][$i],'freeword'=>$freeword])}}">
+            <a href="{{route('shop',['shop_content' => $array_result['rest'][$i],'freeword'=>$freeword])}}">
                 <div class="shopImg">
                     <img src={{$img_url}} class="thumb" alt="img">
                 </div>

@@ -5,8 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\shop;
 
-class ShopController extends Controller
+class ShopsController extends Controller
 {
+    public function store(Request $request)
+    {
+        $params = $request->validate([
+            'guruid' => 'required|max:50',
+        ]);
+
+        Post::create($params);
+
+    }
+
     public function index( Request $request )
     {
         $freeword = $request->freeword;
@@ -14,10 +24,12 @@ class ShopController extends Controller
         $shop_data = $request->shop_content;
 
         if(Shop::where(['guruid'=>$request->shop_content['id']])->exists()){
-            $shop=Shop::where(['guruid'=>$request->id]);
+            $shop=Shop::where(['guruid'=>$request->shop_content['id']])->first();
+            $comments =$shop->comments()->paginate(3);
         }else{
-            $shop ='';
+            $comments ='';
         }
+        
         
         
         if($shop_data['image_url']['shop_image1']){
@@ -27,15 +39,17 @@ class ShopController extends Controller
         }else{
             $img = asset('img/result/noImage.png');
         }
+        
+
         return view('shop',[
             'freeword' =>$freeword,
-            'shop' => $shop,
+            'comments'=>$comments,
             'guruid' =>$shop_data['id'],
             'shopname'=>$shop_data['name'],
             'chiiki'=>$shop_data['code']['prefname'],
             'gurunabi'=>$shop_data['url'],
             'img'=>$img
-            ]);
+        ]);
         
     }
 }
