@@ -36,8 +36,8 @@
                 </div>
 
                 <ul class="commentList">
-                @if($shop!='')
-                    @forelse($shop->comments as $comment)
+                @if($comments!='')
+                    @forelse($comments as $comment)
                         <li class="comment">
                             <div><img src="{{ asset('img/shop/icon.png')}}" alt="image"></div>
                             <p>{!! nl2br(e($comment->body)) !!}</p>
@@ -54,7 +54,9 @@
                         <p>コメントはまだありません</p>
                     </li>
                 @endif
-
+                @if($comments!='')
+                    {!! $comments->links() !!}
+                @endif
                 </ul>
                 @if(Auth::check())
                 <form action="{{route('comments.store')}}" method="post">

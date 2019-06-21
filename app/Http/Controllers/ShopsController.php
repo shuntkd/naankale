@@ -25,9 +25,11 @@ class ShopsController extends Controller
 
         if(Shop::where(['guruid'=>$request->shop_content['id']])->exists()){
             $shop=Shop::where(['guruid'=>$request->shop_content['id']])->first();
+            $comments =$shop->comments()->paginate(3);
         }else{
-            $shop ='';
+            $comments ='';
         }
+        
         
         
         if($shop_data['image_url']['shop_image1']){
@@ -37,15 +39,17 @@ class ShopsController extends Controller
         }else{
             $img = asset('img/result/noImage.png');
         }
+        
+
         return view('shop',[
             'freeword' =>$freeword,
-            'shop' => $shop,
+            'comments'=>$comments,
             'guruid' =>$shop_data['id'],
             'shopname'=>$shop_data['name'],
             'chiiki'=>$shop_data['code']['prefname'],
             'gurunabi'=>$shop_data['url'],
             'img'=>$img
-            ]);
+        ]);
         
     }
 }
