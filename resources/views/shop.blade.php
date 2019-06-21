@@ -55,7 +55,7 @@
                     </li>
                 @endif
                 @if($comments!='')
-                    {!! $comments->links() !!}
+                    {{ $comments->appends(request()->input())->links()}}
                 @endif
                 </ul>
                 @if(Auth::check())
