@@ -32,9 +32,10 @@ class LikesController extends Controller
         return redirect()->back();
     }
 
-    public function destory(Request $request,$guruid) {
+    public function destory(Request $request) {
 
         $params = $request->validate([
+            'guruid' => 'required',
             'user_id'=>'required',
         ]);
 

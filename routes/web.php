@@ -34,8 +34,7 @@ Route::resource('comments', 'CommentsController',['only' => ['store']]);
 Route::resource('shops', 'ShopsController', ['only' => ['create', 'store']]);
 Route::resource('likes', 'LikesController',['only' => ['store','destroy']]);
 
-Route::post('/posts/{post}/likes', 'LikesController@store');
-Route::post('/posts/{post}/likes/{like}', 'LikesController@destroy')->name('destroy');
+
 
 
 

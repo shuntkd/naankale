@@ -25,9 +25,10 @@
                         -->	
                         @if(Auth::check())
                             @if(NULL !== App\Like::where(['guruid'=>$guruid])->first())
-                                <form method="DELETE" action="{{route('likes.destroy',['guruid'=>$guruid])}}">  
+                                <form method="post" action="{{route('likes.destroy')}}">
+                                @method('delete')
                                 @csrf
-                                    
+                                    <input name="guruid" type="hidden" value="{{$guruid}}">
                                     <input name="user_id" type="hidden" value="{{Auth::user()->id}}">
                                     <button class="btn" type="submit">
                                         <p>よく行くよ！</p>
