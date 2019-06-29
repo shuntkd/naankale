@@ -666,8 +666,22 @@ header a:hover{
 	text-decoration: none;
 }
 
+.btn__untap {
+	position: relative;
+	display: inline-block;
+	border-radius: 64px;
+	margin: 30px auto 60px auto;
+	border-color: #22b573;
+	background: #FFFFFF;
+	text-decoration: none;
+}
+
 .btn:hover{
 	background-color: #2BC781;
+}
+
+.btn__untap:hover{
+	border-color: #2BC781;
 }
 
 .btn a{
@@ -680,9 +694,39 @@ header a:hover{
 	text-align: center;
 }
 
+.btn p{
+	display: block;
+	font-size: 20px;
+	padding: 1em 1.5em;
+	color: #FFFFFF;
+	text-decoration: none;
+	width: 100%;
+	text-align: center;
+	margin-block-end: 0em;
+}
+
+
+.btn__untap p{
+	display: block;
+	font-size: 20px;
+	padding: 1em 1.5em;
+	color: #22b573;
+	text-decoration: none;
+	width: 100%;
+	text-align: center;
+	margin-block-end: 0em;
+}
+
+
 .btn a:hover{
 	color: #FFFFFF;
 }
+
+.btn__tap a:hover{
+	color: #2BC781;
+}
+
+
 
 /* comment 設定
    =================================================================== */
