@@ -8,7 +8,7 @@ class Like extends Model
 {
     protected $fillable = ['user_id', 'shop_id','guruid'];
 
-    public function Post()
+    public function Shop()
     {
       return $this->belongsTo('App\Shop');
     }

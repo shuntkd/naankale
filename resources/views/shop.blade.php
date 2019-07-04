@@ -25,8 +25,7 @@
                         -->	
                         @if(Auth::check())
                             @if(NULL !== App\Like::where(['guruid'=>$guruid])->first())
-                                <form method="post" action="{{route('likes.destroy')}}">
-                                @method('delete')
+                                <form method="post" action="{{route('likesdestroy')}}">
                                 @csrf
                                     <input name="guruid" type="hidden" value="{{$guruid}}">
                                     <input name="user_id" type="hidden" value="{{Auth::user()->id}}">
@@ -35,7 +34,7 @@
                                     </button>
                                 </form>
                             @else
-                                <form method="post" action="{{route('likes.store')}}">  
+                                <form method="post" action="{{route('likesstore')}}">  
                                 @csrf
                                     <input name="guruid" type="hidden" value="{{$guruid}}">
                                     <input name="user_id" type="hidden" value="{{Auth::user()->id}}">
@@ -59,7 +58,8 @@
                 </div>
 
                 <ul class="commentList">
-                @if($comments!='')
+                @if($comments)
+
                     @forelse($comments as $comment)
                         <li class="comment">
                             <div><img src="{{ asset('img/shop/icon.png')}}" alt="image"></div>
@@ -77,7 +77,7 @@
                         <p>コメントはまだありません</p>
                     </li>
                 @endif
-                @if($comments!='')
+                @if($comments)
                     {{ $comments->appends(request()->input())->links()}}
                 @endif
                 </ul>

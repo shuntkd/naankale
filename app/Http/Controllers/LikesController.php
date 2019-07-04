@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\shop;
-use App\like;
+use App\User;
+use App\Shop;
+use App\Like;
 
 class LikesController extends Controller
 {
@@ -32,14 +33,14 @@ class LikesController extends Controller
         return redirect()->back();
     }
 
-    public function destory(Request $request) {
+    public function destroy(Request $request) {
 
         $params = $request->validate([
             'guruid' => 'required',
             'user_id'=>'required',
         ]);
 
-        Like::findOrFail($params)->delete();
+        User::where('id',$params['user_id'])->first()->likes()->where('guruid',$params['guruid'])->delete();
         
 
         return redirect()->back();

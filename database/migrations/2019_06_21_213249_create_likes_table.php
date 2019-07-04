@@ -17,7 +17,7 @@ class CreateLikesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned();
             $table->integer('shop_id')->unsigned();
-            $table->integer('guruid')->unsigned();
+            $table->string('guruid');
             $table->timestamps();
 
 
