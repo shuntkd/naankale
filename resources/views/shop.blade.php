@@ -62,7 +62,7 @@
 
                     @forelse($comments as $comment)
                         <li class="comment">
-                            <div><img src="{{ asset('img/shop/icon.png')}}" alt="image"></div>
+                            <div><img src="{{ $comment->user->picture}}" alt="image"></div>
                             <p>{!! nl2br(e($comment->body)) !!}</p>
                         </li>
                     @empty

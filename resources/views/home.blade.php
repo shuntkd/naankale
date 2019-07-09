@@ -33,62 +33,29 @@
 					</div>
 	
 					<ul class="multiple-items">
-						<li>
-							<a href="">
-								<div class="swiper-slide"><img src="{{ asset('img/top/left.jpg') }}" alt="image"></div>
-								<div class="shopName">
-										<img src="{{ asset('img/top/shop_bk.png') }}" alt="image">
-										<p>インダス<br>名古屋市</p>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="">
-								<div class="swiper-slide"><img src="{{ asset('img/top/center.jpg') }}" alt="image"/></div>
-								<div class="shopName">
-										<img src="{{ asset('img/top/shop_bk.png') }}" alt="image">
-										<p>アンジェリ<br>大田区</p>	
-								</div>
-							</a>
-						</li>
+					@for($i = 0; $i < count($array_likes['rest']); $i++)
+
+						@if($array_likes['rest'][$i]['image_url']['shop_image1'])
+							<?php $img_url = $array_likes['rest'][$i]['image_url']['shop_image1'];?>
+						@elseif($array_likes['rest'][$i]['image_url']['shop_image2'])
+							<?php $img_url = $array_likes['rest'][$i]['image_url']['shop_image1']; ?>
+						@else
+							<?php $img_url = asset('img/result/noImage.png'); ?>
+						@endif
 
 						<li>
-							<a href="">	
-								<div class="swiper-slide"><img src="{{ asset('img/top/right.jpg') }}" alt="image"/></div>
-								<div class="shopName">
-									<img src="{{ asset('img/top/shop_bk.png') }}" alt="image">
-									<p>アーリー<br>横浜市</p>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="">
-								<div class="swiper-slide"><img src="{{ asset('img/top/left.jpg') }}" alt="image"></div>
+							<a href="{{route('shop',['shop_content' => $array_likes['rest'][$i]])}}">
+								<div class="swiper-slide"><img src="{{$img_url}}" alt="image"></div>
 								<div class="shopName">
 										<img src="{{ asset('img/top/shop_bk.png') }}" alt="image">
-										<p>インダス<br>名古屋市</p>
+										<p>
+											{{$array_likes['rest'][$i]['name']}}<br>
+											{{$array_likes['rest'][$i]['access']['station']}}
+										</p>
 								</div>
 							</a>
 						</li>
-						<li>
-							<a href="">
-								<div class="swiper-slide"><img src="{{ asset('img/top/center.jpg') }}" alt="image"/></div>
-								<div class="shopName">
-										<img src="{{ asset('img/top/shop_bk.png') }}" alt="image">
-										<p>アンジェリ<br>大田区</p>	
-								</div>
-							</a>
-						</li>
-
-						<li>
-							<a href="">	
-								<div class="swiper-slide"><img src="{{ asset('img/top/right.jpg') }}" alt="image"/></div>
-								<div class="shopName">
-										<img src="{{ asset('img/top/shop_bk.png')}}" alt="image">
-										<p>アーリー<br>横浜市</p>
-								</div>
-							</a>
-						</li>
+					@endfor
 					</ul>
 				</section>
 
@@ -145,5 +112,6 @@
 				</section>
 
 			</div>
+
 
 @endsection('content')

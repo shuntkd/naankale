@@ -740,6 +740,7 @@ ul.commentList{
 	display: flex;
 }
 
+
 .submitComment{
 	display: flex;
 	padding: 0 10px;
@@ -753,6 +754,12 @@ li.comment {
 .comment div{
 	width: 30%;
 	padding: 25px;
+}
+
+.comment div img{
+	position: relative;
+	border-radius: 50%;
+	width: 60px;
 }
 
 .shopContents__container > p{
