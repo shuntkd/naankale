@@ -23,7 +23,7 @@
 			
 
 			<div class="contents_container">
-
+			@if(NULL !== $array_likes)
 				<section class="content">
 					<div class="content__title">
 						<h2>ナン好きがよく行くお店</h2>
@@ -31,7 +31,7 @@
 						<img src="{{ asset('img/top/shop_1.png') }}" alt="image" class="left"/>
 						<img src="{{ asset('img/top/shop_2.png') }}" alt="image" class="right"/>
 					</div>
-	
+					
 					<ul class="multiple-items">
 					@for($i = 0; $i < count($array_likes['rest']); $i++)
 
@@ -57,8 +57,9 @@
 						</li>
 					@endfor
 					</ul>
+				
 				</section>
-
+			@endif
 
 				<section class="content">
 					
