@@ -7,8 +7,15 @@ function autocomp(){
             }
         });
     };
+
+function autocompsele(){
+    $('#freeword').on("autocompleteselect",function (event, ui){
+        $("#searchform").submit();
+    }
+)};
     
 
     $(window).load(function(){
             autocomp();
+            autocompsele();
         });
