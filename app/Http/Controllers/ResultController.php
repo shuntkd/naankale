@@ -32,7 +32,7 @@ class ResultController extends Controller
         $result = $client->request('GET', 'https://api.gnavi.co.jp/RestSearchAPI/v3/',[
             'query' => [
                 'keyid' => '2fec3133982fe68d86c709c6594f120c',
-                'category_s'=> 'RSFST16001',
+                'category_s'=> 'RSFST16001',//インドカレーカテゴリー
                 $area_request => $area_code[0],
             ],
             ['http_errors' => false]

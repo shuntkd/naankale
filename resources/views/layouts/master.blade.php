@@ -85,7 +85,7 @@
 							<ul class="searchWord"><li><p>{{$freeword}}</p></li></ul>
 						@endif
 						<div class="searchBox">
-							<form method="get" action="{{route('result')}}">
+							<form method="get" action="{{route('result')}}" id="searchform">
 									{{ csrf_field() }}	
 									<div class="searchBox__input"><input type="text" name="freeword" id="freeword" placeholder="地域を入力して検索"/></div>
 									<div class="searchBox__submit"><input type="submit" value="&#xf002"></div>
