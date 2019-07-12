@@ -10,9 +10,9 @@
 
 <div class="hero">
 				<div class="searchBox">
-					<form action="{{route('result')}}" method="GET" >
-						<div class="searchBox__input"><input type="text" name="freeword" id="freeword" placeholder="地域を入力して検索"/></div>
-						<i class="searchBox__submit"><input type="submit" id="submit" value="&#xf002"/></i>
+					<form id="searchForm" action="{{route('result')}}" method="GET" >
+						<div class="searchBox__input"><input type="text"  id="freeword" placeholder="地域を入力して検索"/></div>
+						<i class="searchBox__submit"><input type="button" id="submit" value="&#xf002"/></i>
 					</form>
 				</div>
 					<a href="#concept" class="heroConcept">
@@ -20,7 +20,7 @@
 					</a>
 			</div>
 
-			
+
 
 			<div class="contents_container">
 			@if(NULL !== $array_likes)
@@ -31,7 +31,7 @@
 						<img src="{{ asset('img/top/shop_1.png') }}" alt="image" class="left"/>
 						<img src="{{ asset('img/top/shop_2.png') }}" alt="image" class="right"/>
 					</div>
-					
+
 					<ul class="multiple-items">
 					@for($i = 0; $i < count($array_likes['rest']); $i++)
 
@@ -57,19 +57,19 @@
 						</li>
 					@endfor
 					</ul>
-				
+
 				</section>
 			@endif
 
 				<section class="content">
-					
+
 					<div class="content__title">
 						<a id="concept"><h2>コンセプト</h2></a>
 						<p>こんな方のためのサービスです</p>
 						<img src="{{ asset('img/top/concept_1.png') }}" alt="image" class="left"/>
 						<img src="{{ asset('img/top/concept_2.png') }}" alt="image" class="right"/>
 					</div>
-						
+
 					<div class="conceptContent">
 						<div>
 							<h3>1 なんか辛そう</h3>
@@ -77,7 +77,7 @@
 							<img src="{{ asset('img/top/content_1_1.png') }}" alt="image" class="sub"/>
 						</div>
 						<div>
-							<img src="{{ asset('img/top/content_1_2.png') }}" alt="image"/>	
+							<img src="{{ asset('img/top/content_1_2.png') }}" alt="image"/>
 						</div>
 					</div>
 
@@ -85,7 +85,7 @@
 						<div>
 							<h3>2 ちょっと入りづらい</h3>
 							<p>私も最初はそうでした。一度行ってみれば気にならなくなりますし、意外とたくさん人が来ていることに驚くと思います。それだけで行かないなんてもったいない！！</p>
-							<img src="{{ asset('img/top/content_2_2.png') }}" alt="image" class="sub"/>								
+							<img src="{{ asset('img/top/content_2_2.png') }}" alt="image" class="sub"/>
 						</div>
 						<div>
 							<img src="{{ asset('img/top/content_2_1.png') }}" alt="image"/>
@@ -95,7 +95,7 @@
 					<div class="conceptContent">
 						<div>
 							<h3>3 どこに行けばいいの</h3>
-							<p>そんな方の背中を押すために、このサービスを作りました。意外とたくさんお店があるので、近くのお店に行ってみてくださいね。</p>													
+							<p>そんな方の背中を押すために、このサービスを作りました。意外とたくさんお店があるので、近くのお店に行ってみてくださいね。</p>
 							<img src="{{ asset('img/top/content_3_2.png') }}" alt="image" class="sub_2"/>
 						</div>
 						<div>
@@ -109,7 +109,7 @@
 					</p>
 					<div class="btn">
 						<a href="#" class="square_btn">近くのお店をさがしてみる</a>
-					</div>			
+					</div>
 				</section>
 
 			</div>
