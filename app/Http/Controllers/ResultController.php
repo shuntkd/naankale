@@ -35,11 +35,15 @@ class ResultController extends Controller
                 'category_s'=> 'RSFST16001',//インドカレーカテゴリー
                 $area_request => $area_code[0],
             ],
-            ['http_errors' => false]
+            'http_errors' => false
         ]);
-        $json_result=$result->getBody(); 
-        $array_result = json_decode($json_result,true);
-        return view('result',['array_result' => $array_result,'freeword'=>$freeword]);
+        if($result->getStatusCode()!=404){
+            $json_result=$result->getBody(); 
+            $array_result = json_decode($json_result,true);
+            return view('result',['array_result' => $array_result,'freeword'=>$freeword]);
+        }else{
+            return view('nopage',['freeword'=>$freeword]);
+        }
 
 }
 }

@@ -21,6 +21,8 @@ Route::get('/kiyaku', 'KiyakuController@index')->name('kiyaku');
 
 Route::get('/policy', 'PolicyController@index')->name('policy');
 
+Route::get('/nopage', 'NopageController@index')->name('nopage');
+
 Auth::routes();
 
 
