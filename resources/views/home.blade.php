@@ -13,6 +13,7 @@
 					<form id="searchForm" action="{{route('result')}}" method="GET" >
 						<div class="searchBox__input"><input type="text"  id="freeword" placeholder="地域を入力して検索"/></div>
 						<i class="searchBox__submit"><input type="button" id="submit" value="&#xf002"/></i>
+						<div class="searchBox__dumy"><input type="text" value="&#xf002"></div>
 					</form>
 				</div>
 					<a href="#concept" class="heroConcept">

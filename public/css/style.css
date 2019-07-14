@@ -167,6 +167,10 @@ header a:hover{
 	outline : none;
   }
 
+  .searchBox__dumy{
+	  display:none;
+  }
+
 /* HeroConcept 設定
    =================================================================== */
 
@@ -843,4 +847,22 @@ footer a {
 footer a:hover{
 	text-decoration: none;
 	color: #A3A3A3;
+}
+
+
+/* kiyaku_policy 設定
+   =================================================================== */
+
+.kiyaku_policy{
+	text-align: left;
+	margin: 5% 5%;
+}
+
+.kiyaku_policy p,ol{
+	text-align: left;
+	margin: 0 0 5% 0;
+}
+
+.kiyaku_policy .content__title h2{
+	margin: 10% 0;
 }

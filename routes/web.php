@@ -23,6 +23,8 @@ Route::get('/policy', 'PolicyController@index')->name('policy');
 
 Route::get('/nopage', 'NopageController@index')->name('nopage');
 
+Route::get('/noid', 'NoidController@index')->name('noid');
+
 Auth::routes();
 
 

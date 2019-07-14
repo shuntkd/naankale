@@ -23,6 +23,8 @@ class ResultController extends Controller
         }elseif(array_keys($code_s,$freeword)){
             $area_code=array_keys($code_s,$freeword);
             $area_request = 'areacode_s';
+        }else{
+            return view('noid',['freeword'=>$freeword]);
         }
 
         //検索結果取得

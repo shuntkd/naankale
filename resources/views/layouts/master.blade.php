@@ -89,6 +89,7 @@
 									{{ csrf_field() }}
 									<div class="searchBox__input"><input type="text" id="freeword" placeholder="地域を入力して検索"/></div>
 									<div class="searchBox__submit"><input type="button" value="&#xf002"></div>
+									<div class="searchBox__dumy"><input type="text" value="&#xf002"></div>
 							</form>
 						</div>
 					</div>
