@@ -10,9 +10,10 @@
 
 <div class="hero">
 				<div class="searchBox">
-					<form action="{{route('result')}}" method="GET" >
-						<div class="searchBox__input"><input type="text" name="freeword" id="freeword" placeholder="地域を入力して検索"/></div>
-						<i class="searchBox__submit"><input type="submit" id="submit" value="&#xf002"/></i>
+					<form id="searchForm" action="{{route('result')}}" method="GET" >
+						<div class="searchBox__input"><input type="text"  id="freeword" placeholder="地域を入力して検索"/></div>
+						<i class="searchBox__submit"><input type="button" id="submit" value="&#xf002"/></i>
+						<div class="searchBox__dumy"><input type="text" value="&#xf002"></div>
 					</form>
 				</div>
 					<a href="#concept" class="heroConcept">
@@ -20,10 +21,10 @@
 					</a>
 			</div>
 
-			
+
 
 			<div class="contents_container">
-
+			@if(NULL !== $array_likes)
 				<section class="content">
 					<div class="content__title">
 						<h2>ナン好きがよく行くお店</h2>
@@ -31,77 +32,45 @@
 						<img src="{{ asset('img/top/shop_1.png') }}" alt="image" class="left"/>
 						<img src="{{ asset('img/top/shop_2.png') }}" alt="image" class="right"/>
 					</div>
-	
+
 					<ul class="multiple-items">
-						<li>
-							<a href="">
-								<div class="swiper-slide"><img src="{{ asset('img/top/left.jpg') }}" alt="image"></div>
-								<div class="shopName">
-										<img src="{{ asset('img/top/shop_bk.png') }}" alt="image">
-										<p>インダス<br>名古屋市</p>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="">
-								<div class="swiper-slide"><img src="{{ asset('img/top/center.jpg') }}" alt="image"/></div>
-								<div class="shopName">
-										<img src="{{ asset('img/top/shop_bk.png') }}" alt="image">
-										<p>アンジェリ<br>大田区</p>	
-								</div>
-							</a>
-						</li>
+					@for($i = 0; $i < count($array_likes['rest']); $i++)
+
+						@if($array_likes['rest'][$i]['image_url']['shop_image1'])
+							<?php $img_url = $array_likes['rest'][$i]['image_url']['shop_image1'];?>
+						@elseif($array_likes['rest'][$i]['image_url']['shop_image2'])
+							<?php $img_url = $array_likes['rest'][$i]['image_url']['shop_image1']; ?>
+						@else
+							<?php $img_url = asset('img/result/noImage.png'); ?>
+						@endif
 
 						<li>
-							<a href="">	
-								<div class="swiper-slide"><img src="{{ asset('img/top/right.jpg') }}" alt="image"/></div>
-								<div class="shopName">
-									<img src="{{ asset('img/top/shop_bk.png') }}" alt="image">
-									<p>アーリー<br>横浜市</p>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="">
-								<div class="swiper-slide"><img src="{{ asset('img/top/left.jpg') }}" alt="image"></div>
+							<a href="{{route('shop',['shop_content' => $array_likes['rest'][$i]])}}">
+								<div class="swiper-slide"><img src="{{$img_url}}" alt="image"></div>
 								<div class="shopName">
 										<img src="{{ asset('img/top/shop_bk.png') }}" alt="image">
-										<p>インダス<br>名古屋市</p>
+										<p>
+											{{$array_likes['rest'][$i]['name']}}<br>
+											{{$array_likes['rest'][$i]['access']['station']}}
+										</p>
 								</div>
 							</a>
 						</li>
-						<li>
-							<a href="">
-								<div class="swiper-slide"><img src="{{ asset('img/top/center.jpg') }}" alt="image"/></div>
-								<div class="shopName">
-										<img src="{{ asset('img/top/shop_bk.png') }}" alt="image">
-										<p>アンジェリ<br>大田区</p>	
-								</div>
-							</a>
-						</li>
-
-						<li>
-							<a href="">	
-								<div class="swiper-slide"><img src="{{ asset('img/top/right.jpg') }}" alt="image"/></div>
-								<div class="shopName">
-										<img src="{{ asset('img/top/shop_bk.png')}}" alt="image">
-										<p>アーリー<br>横浜市</p>
-								</div>
-							</a>
-						</li>
+					@endfor
 					</ul>
-				</section>
 
+				</section>
+			@endif
 
 				<section class="content">
-					
+
 					<div class="content__title">
 						<a id="concept"><h2>コンセプト</h2></a>
 						<p>こんな方のためのサービスです</p>
 						<img src="{{ asset('img/top/concept_1.png') }}" alt="image" class="left"/>
 						<img src="{{ asset('img/top/concept_2.png') }}" alt="image" class="right"/>
 					</div>
-						
+
 					<div class="conceptContent">
 						<div>
 							<h3>1 なんか辛そう</h3>
@@ -109,7 +78,7 @@
 							<img src="{{ asset('img/top/content_1_1.png') }}" alt="image" class="sub"/>
 						</div>
 						<div>
-							<img src="{{ asset('img/top/content_1_2.png') }}" alt="image"/>	
+							<img src="{{ asset('img/top/content_1_2.png') }}" alt="image"/>
 						</div>
 					</div>
 
@@ -117,7 +86,7 @@
 						<div>
 							<h3>2 ちょっと入りづらい</h3>
 							<p>私も最初はそうでした。一度行ってみれば気にならなくなりますし、意外とたくさん人が来ていることに驚くと思います。それだけで行かないなんてもったいない！！</p>
-							<img src="{{ asset('img/top/content_2_2.png') }}" alt="image" class="sub"/>								
+							<img src="{{ asset('img/top/content_2_2.png') }}" alt="image" class="sub"/>
 						</div>
 						<div>
 							<img src="{{ asset('img/top/content_2_1.png') }}" alt="image"/>
@@ -127,7 +96,7 @@
 					<div class="conceptContent">
 						<div>
 							<h3>3 どこに行けばいいの</h3>
-							<p>そんな方の背中を押すために、このサービスを作りました。意外とたくさんお店があるので、近くのお店に行ってみてくださいね。</p>													
+							<p>そんな方の背中を押すために、このサービスを作りました。意外とたくさんお店があるので、近くのお店に行ってみてくださいね。</p>
 							<img src="{{ asset('img/top/content_3_2.png') }}" alt="image" class="sub_2"/>
 						</div>
 						<div>
@@ -141,9 +110,10 @@
 					</p>
 					<div class="btn">
 						<a href="#" class="square_btn">近くのお店をさがしてみる</a>
-					</div>			
+					</div>
 				</section>
 
 			</div>
+
 
 @endsection('content')

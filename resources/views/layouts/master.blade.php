@@ -17,22 +17,22 @@
 		<script type="text/javascript" src="{{ asset('js/smoothscroll.js') }}" defer></script>
 		<script type="text/javascript" src="{{ asset('js/login.js') }}" defer></script>
 		@yield('js')
-        
+
         <script>
 			var list_json =  [];
 			var list_json = JSON.parse('{!! config('area_list') !!}');
 			var list = [];
 			for(var key in list_json){
 				list.push(list_json[key]);
-			}		
+			}
 		</script>
 		<script type="text/javascript" src="{{ asset('js/autocomp.js') }}" defer></script>
 
 	</head>
 	<body>
 
-			
-			
+
+
 		<div class="commom_container">
 			@if(!Request::is('/'))
 			<header>
@@ -85,10 +85,11 @@
 							<ul class="searchWord"><li><p>{{$freeword}}</p></li></ul>
 						@endif
 						<div class="searchBox">
-							<form method="get" action="{{route('result')}}">
-									{{ csrf_field() }}	
-									<div class="searchBox__input"><input type="text" name="freeword" id="freeword" placeholder="地域を入力して検索"/></div>
-									<div class="searchBox__submit"><input type="submit" value="&#xf002"></div>
+                            <form id="searchForm" action="{{route('result')}}" method="GET">
+									{{ csrf_field() }}
+									<div class="searchBox__input"><input type="text" id="freeword" placeholder="地域を入力して検索"/></div>
+									<div class="searchBox__submit"><input type="button" value="&#xf002"></div>
+									<div class="searchBox__dumy"><input type="text" value="&#xf002"></div>
 							</form>
 						</div>
 					</div>
@@ -104,9 +105,8 @@
 						<li><a href="{{route('kiyaku')}}" class="kiyakuink">利用規約</a></li>
 						<li><a href="{{route('policy')}}" class="praivacyLink">プライバシーポリシー</a></li>
 					</ul>
-					<p>© Copyright 2019 ナンを食べに行こう All rights reserved.</p>		
+					<p>© Copyright 2019 ナンを食べに行こう All rights reserved.</p>
 			</footer>
 		</div>
 	</body>
 </html>
-

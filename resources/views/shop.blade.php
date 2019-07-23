@@ -17,11 +17,33 @@
                             <h3>{{$shopname}}</h3>
                             <p>{{$chiiki}}</p>
                         </div>
-                        <div>
+                        <!--<div>
                             <div class="btn">
-                                <a href="#" class="square_btn">よく行くよ！</a>
+                                <a href="" class="square_btn">よく行くよ！</a>
                             </div>
-                        </div>									
+                        </div> 
+                        -->	
+                        @if(Auth::check())
+                            @if(NULL !== App\Like::where(['guruid'=>$guruid])->first())
+                                <form method="post" action="{{route('likesdestroy')}}">
+                                @csrf
+                                    <input name="guruid" type="hidden" value="{{$guruid}}">
+                                    <input name="user_id" type="hidden" value="{{Auth::user()->id}}">
+                                    <button class="btn" type="submit">
+                                        <p>よく行くよ！</p>
+                                    </button>
+                                </form>
+                            @else
+                                <form method="post" action="{{route('likesstore')}}">  
+                                @csrf
+                                    <input name="guruid" type="hidden" value="{{$guruid}}">
+                                    <input name="user_id" type="hidden" value="{{Auth::user()->id}}">
+                                    <button class="btn__untap" type="submit">
+                                        <p>よく行く</p>
+                                    </button>
+                                </form>
+                            @endif
+                        @endif				
                     </div>
                     <p class="gLink">
                         <a href="{{$gurunabi}}">ぐるなびで詳しく見る→</a>
@@ -36,10 +58,11 @@
                 </div>
 
                 <ul class="commentList">
-                @if($comments!='')
+                @if($comments)
+
                     @forelse($comments as $comment)
                         <li class="comment">
-                            <div><img src="{{ asset('img/shop/icon.png')}}" alt="image"></div>
+                            <div><img src="{{ $comment->user->picture}}" alt="image"></div>
                             <p>{!! nl2br(e($comment->body)) !!}</p>
                         </li>
                     @empty
@@ -54,7 +77,7 @@
                         <p>コメントはまだありません</p>
                     </li>
                 @endif
-                @if($comments!='')
+                @if($comments)
                     {{ $comments->appends(request()->input())->links()}}
                 @endif
                 </ul>

@@ -16,4 +16,11 @@ class Comment extends Model
     {
         return $this->belongsTo('App\Shop');
     }
+
+    public function user()
+    {
+      return $this->belongsTo(User::class);
+    }
+
+   
 }

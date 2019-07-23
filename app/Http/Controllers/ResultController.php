@@ -23,6 +23,8 @@ class ResultController extends Controller
         }elseif(array_keys($code_s,$freeword)){
             $area_code=array_keys($code_s,$freeword);
             $area_request = 'areacode_s';
+        }else{
+            return view('noid',['freeword'=>$freeword]);
         }
 
         //検索結果取得
@@ -32,14 +34,18 @@ class ResultController extends Controller
         $result = $client->request('GET', 'https://api.gnavi.co.jp/RestSearchAPI/v3/',[
             'query' => [
                 'keyid' => '2fec3133982fe68d86c709c6594f120c',
-                'category_s'=> 'RSFST16001',
+                'category_s'=> 'RSFST16001',//インドカレーカテゴリー
                 $area_request => $area_code[0],
             ],
-            ['http_errors' => false]
+            'http_errors' => false
         ]);
-        $json_result=$result->getBody(); 
-        $array_result = json_decode($json_result,true);
-        return view('result',['array_result' => $array_result,'freeword'=>$freeword]);
+        if($result->getStatusCode()!=404){
+            $json_result=$result->getBody(); 
+            $array_result = json_decode($json_result,true);
+            return view('result',['array_result' => $array_result,'freeword'=>$freeword]);
+        }else{
+            return view('nopage',['freeword'=>$freeword]);
+        }
 
 }
 }

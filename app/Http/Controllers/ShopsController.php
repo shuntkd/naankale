@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\shop;
+use App\Shop;
 
 class ShopsController extends Controller
 {
@@ -23,11 +23,10 @@ class ShopsController extends Controller
 
         $shop_data = $request->shop_content;
 
-        if(Shop::where(['guruid'=>$request->shop_content['id']])->exists()){
-            $shop=Shop::where(['guruid'=>$request->shop_content['id']])->first();
+        if($shop = Shop::where(['guruid'=>$request->shop_content['id']])->first()){
             $comments =$shop->comments()->paginate(3);
         }else{
-            $comments ='';
+            $comments =null;
         }
         
         
@@ -39,6 +38,8 @@ class ShopsController extends Controller
         }else{
             $img = asset('img/result/noImage.png');
         }
+
+
         
 
         return view('shop',[

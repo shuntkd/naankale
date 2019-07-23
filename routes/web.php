@@ -21,6 +21,10 @@ Route::get('/kiyaku', 'KiyakuController@index')->name('kiyaku');
 
 Route::get('/policy', 'PolicyController@index')->name('policy');
 
+Route::get('/nopage', 'NopageController@index')->name('nopage');
+
+Route::get('/noid', 'NoidController@index')->name('noid');
+
 Auth::routes();
 
 
@@ -32,5 +36,13 @@ Route::get('/auth/logout', 'OAuthLoginController@postLogout');
 
 Route::resource('comments', 'CommentsController',['only' => ['store']]);
 Route::resource('shops', 'ShopsController', ['only' => ['create', 'store']]);
+
+
+Route::post('/shop/like/store', 'LikesController@store')->name('likesstore');
+Route::post('/shop/like/destroy', 'LikesController@destroy')->name('likesdestroy');
+
+
+
+
 
 
