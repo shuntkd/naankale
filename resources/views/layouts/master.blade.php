@@ -106,6 +106,11 @@
 						<li><a href="{{route('policy')}}" class="praivacyLink">プライバシーポリシー</a></li>
 					</ul>
 					<p>© Copyright 2019 ナンを食べに行こう All rights reserved.</p>
+					<p>
+						<a href="https://api.gnavi.co.jp/api/scope/" target="_blank">
+						<img src="https://api.gnavi.co.jp/api/img/credit/api_155_20.gif" width="155" height="20" border="0" alt="グルメ情報検索サイト　ぐるなび">
+						</a>
+					</p>
 			</footer>
 		</div>
 	</body>
