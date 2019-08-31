@@ -9,8 +9,8 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" media="screen,print" />
 		<!-- jQuery.jsの読み込み -->
 
-		<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
-		<script src="http://code.jquery.com/jquery-1.8.3.js" defer></script>
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+		<script src="https://code.jquery.com/jquery-1.8.3.js" defer></script>
 		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" defer></script>
 		<script type="text/javascript" src="{{ asset('js/slick-1.8.1/slick/slick.min.js') }}" defer></script>
 		<script type="text/javascript" src="{{ asset('js/slick.js') }}" defer></script>
